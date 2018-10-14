@@ -1,0 +1,32 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.opticalshopall.app"
+    },
+    "jhipsterVersion": "5.4.2",
+    "applicationType": "monolith",
+    "baseName": "opticalshopall",
+    "packageName": "com.opticalshopall.app",
+    "packageFolder": "com/opticalshopall/app",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": false,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": "elasticsearch",
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "MWZkYWQ4N2U4NzVhMjBlYWI0YWYzYTEwODcyMjg1ZmJhOWEzMDhkZWI0YzAxMmM0MmY1YjJjZTFkNzM5ODA3OTI3ZTUzZjAzMjg1MzUwNmYyNGQ3MjRmNzNlMDZjODZhYjE2ZWUzOTVmNDI3Yjg1NmVlNDQwMzBmZjU1ZTE3NGE=",
+    "clientFramework": "angularX",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "enableTranslation": false
+  }
+}
