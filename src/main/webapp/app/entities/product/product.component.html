@@ -1,0 +1,113 @@
+<div>
+    <h2 id="page-heading">
+        <span>Products</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-product" [routerLink]="['/product/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down" >
+            Create new Product
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="Query">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="products">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Name</span></th>
+            <th><span>Product Type</span></th>
+            <th><span>Code</span></th>
+            <th><span>Description</span></th>
+            <th><span>Color</span></th>
+            <th><span>Costprice</span></th>
+            <th><span>Selling Price</span></th>
+            <th><span>Glass Coating</span></th>
+            <th><span>Glass Design</span></th>
+            <th><span>Quantity Available</span></th>
+            <th><span>Created On</span></th>
+            <th><span>Updated On</span></th>
+            <th><span>Active</span></th>
+            <th><span>Barcode</span></th>
+            <th><span>Company</span></th>
+            <th><span>Quality</span></th>
+            <th><span>Supplier</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let product of products ;trackBy: trackId">
+                <td><a [routerLink]="['/product', product.id, 'view' ]">{{product.id}}</a></td>
+                <td>{{product.name}}</td>
+                <td>{{product.productType}}</td>
+                <td>{{product.code}}</td>
+                <td>{{product.description}}</td>
+                <td>{{product.color}}</td>
+                <td>{{product.costprice}}</td>
+                <td>{{product.sellingPrice}}</td>
+                <td>{{product.glassCoating}}</td>
+                <td>{{product.glassDesign}}</td>
+                <td>{{product.quantityAvailable}}</td>
+                <td>{{product.createdOn | date:'medium'}}</td>
+                <td>{{product.updatedOn | date:'medium'}}</td>
+                <td>{{product.active}}</td>
+                <td>{{product.barcode}}</td>
+                <td>
+                    <div *ngIf="product.company">
+                        <a [routerLink]="['../company', product.company?.id, 'view' ]" >{{product.company?.name}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="product.quality">
+                        <a [routerLink]="['../quality', product.quality?.id, 'view' ]" >{{product.quality?.name}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="product.supplier">
+                        <a [routerLink]="['../supplier', product.supplier?.id, 'view' ]" >{{product.supplier?.name}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/product', product.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/product', product.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'product/'+ product.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

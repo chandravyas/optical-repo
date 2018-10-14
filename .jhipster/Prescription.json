@@ -1,0 +1,50 @@
+{
+    "name": "Prescription",
+    "fields": [
+        {
+            "fieldName": "phonenumber",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "patientName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "doctorName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "rightVision",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "leftVision",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "powerDetails",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "continousWear",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20181014194419",
+    "entityTableName": "prescription",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

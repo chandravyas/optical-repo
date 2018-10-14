@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="prescription">
+            <h2><span>Prescription</span> {{prescription.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Phonenumber</span></dt>
+                <dd>
+                    <span>{{prescription.phonenumber}}</span>
+                </dd>
+                <dt><span>Patient Name</span></dt>
+                <dd>
+                    <span>{{prescription.patientName}}</span>
+                </dd>
+                <dt><span>Doctor Name</span></dt>
+                <dd>
+                    <span>{{prescription.doctorName}}</span>
+                </dd>
+                <dt><span>Right Vision</span></dt>
+                <dd>
+                    <span>{{prescription.rightVision}}</span>
+                </dd>
+                <dt><span>Left Vision</span></dt>
+                <dd>
+                    <span>{{prescription.leftVision}}</span>
+                </dd>
+                <dt><span>Power Details</span></dt>
+                <dd>
+                    <span>{{prescription.powerDetails}}</span>
+                </dd>
+                <dt><span>Continous Wear</span></dt>
+                <dd>
+                    <span>{{prescription.continousWear}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/prescription', prescription.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

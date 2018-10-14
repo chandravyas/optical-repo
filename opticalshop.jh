@@ -1,0 +1,113 @@
+
+entity Product {
+    name String required
+    productType ProductType
+    code String
+    description String
+    color String
+    costprice BigDecimal
+    sellingPrice BigDecimal
+    glassCoating String
+    glassDesign String 
+    quantityAvailable Long
+    createdOn ZonedDateTime
+    updatedOn ZonedDateTime
+    active Boolean
+    barcode String
+}
+
+entity Company{
+    name String
+    createdOn ZonedDateTime
+    updatedOn ZonedDateTime
+    active Boolean
+}
+
+entity Quality{
+    name String
+    createdOn ZonedDateTime
+    updatedOn ZonedDateTime
+    active Boolean
+}
+
+entity Supplier{
+    name String
+    contactPerson String
+    contactNumber String
+    gstNumber String
+    state String
+    createdOn ZonedDateTime
+    updatedOn ZonedDateTime
+    active Boolean
+}
+
+enum ProductType {
+    Glasses, Goggles, Frames
+}
+
+
+enum OrderStatus {
+    COMPLETED, PENDING, CANCELLED
+}
+
+enum Gender {
+    MALE, FEMALE, OTHER
+}
+
+entity Customer {
+    firstName String required
+    lastName String required
+    gender Gender required
+    email String pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)
+    phone String required
+    addressLine1 String
+}
+
+
+entity Prescription { 
+     phonenumber String required
+     patientName String required
+     doctorName String
+     rightVision String
+     leftVision String
+     powerDetails TextBlob
+     continousWear Boolean
+}
+
+entity ProductOrder{
+    quantity Integer
+    totalCost BigDecimal
+    status OrderStatus
+    placedDate Instant required
+    invoiceId Integer
+}
+
+entity OrderItem {
+    quantity Integer required min(0)
+    totalPrice BigDecimal required min(0)
+    discount BigDecimal
+    finalPrice BigDecimal
+}
+
+entity Invoice {
+    code String required
+    date Instant 
+    details String
+    paymentDate Instant 
+    paymentAmount BigDecimal 
+}
+
+relationship OneToMany {
+  Customer{productorder} to ProductOrder{customer},
+  ProductOrder{orderitem} to OrderItem{productorder},
+  Company{product} to Product{company(name)},
+  Quality{product} to Product{quality(name)},
+  Supplier{product} to Product{supplier(name)}
+}
+
+relationship ManyToOne {
+  OrderItem{product(name) required} to Product,
+  OrderItem{prescription} to Prescription
+}
+
+service * with serviceClass

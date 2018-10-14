@@ -1,0 +1,71 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-prescription-heading">Create or edit a Prescription</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!prescription.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="prescription.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_phonenumber">Phonenumber</label>
+                    <input type="text" class="form-control" name="phonenumber" id="field_phonenumber"
+                        [(ngModel)]="prescription.phonenumber" required/>
+                    <div [hidden]="!(editForm.controls.phonenumber?.dirty && editForm.controls.phonenumber?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.phonenumber?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_patientName">Patient Name</label>
+                    <input type="text" class="form-control" name="patientName" id="field_patientName"
+                        [(ngModel)]="prescription.patientName" required/>
+                    <div [hidden]="!(editForm.controls.patientName?.dirty && editForm.controls.patientName?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.patientName?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_doctorName">Doctor Name</label>
+                    <input type="text" class="form-control" name="doctorName" id="field_doctorName"
+                        [(ngModel)]="prescription.doctorName" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_rightVision">Right Vision</label>
+                    <input type="text" class="form-control" name="rightVision" id="field_rightVision"
+                        [(ngModel)]="prescription.rightVision" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_leftVision">Left Vision</label>
+                    <input type="text" class="form-control" name="leftVision" id="field_leftVision"
+                        [(ngModel)]="prescription.leftVision" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_powerDetails">Power Details</label>
+                    <textarea class="form-control" name="powerDetails" id="field_powerDetails"
+                        [(ngModel)]="prescription.powerDetails" ></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_continousWear">Continous Wear</label>
+                    <input type="checkbox" class="form-control" name="continousWear" id="field_continousWear"
+                        [(ngModel)]="prescription.continousWear" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

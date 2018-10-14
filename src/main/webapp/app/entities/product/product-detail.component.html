@@ -1,0 +1,97 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="product">
+            <h2><span>Product</span> {{product.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{product.name}}</span>
+                </dd>
+                <dt><span>Product Type</span></dt>
+                <dd>
+                    <span>{{product.productType}}</span>
+                </dd>
+                <dt><span>Code</span></dt>
+                <dd>
+                    <span>{{product.code}}</span>
+                </dd>
+                <dt><span>Description</span></dt>
+                <dd>
+                    <span>{{product.description}}</span>
+                </dd>
+                <dt><span>Color</span></dt>
+                <dd>
+                    <span>{{product.color}}</span>
+                </dd>
+                <dt><span>Costprice</span></dt>
+                <dd>
+                    <span>{{product.costprice}}</span>
+                </dd>
+                <dt><span>Selling Price</span></dt>
+                <dd>
+                    <span>{{product.sellingPrice}}</span>
+                </dd>
+                <dt><span>Glass Coating</span></dt>
+                <dd>
+                    <span>{{product.glassCoating}}</span>
+                </dd>
+                <dt><span>Glass Design</span></dt>
+                <dd>
+                    <span>{{product.glassDesign}}</span>
+                </dd>
+                <dt><span>Quantity Available</span></dt>
+                <dd>
+                    <span>{{product.quantityAvailable}}</span>
+                </dd>
+                <dt><span>Created On</span></dt>
+                <dd>
+                    <span>{{product.createdOn}}</span>
+                </dd>
+                <dt><span>Updated On</span></dt>
+                <dd>
+                    <span>{{product.updatedOn}}</span>
+                </dd>
+                <dt><span>Active</span></dt>
+                <dd>
+                    <span>{{product.active}}</span>
+                </dd>
+                <dt><span>Barcode</span></dt>
+                <dd>
+                    <span>{{product.barcode}}</span>
+                </dd>
+                <dt><span>Company</span></dt>
+                <dd>
+                    <div *ngIf="product.company">
+                        <a [routerLink]="['/company', product.company?.id, 'view']">{{product.company?.name}}</a>
+                    </div>
+                </dd>
+                <dt><span>Quality</span></dt>
+                <dd>
+                    <div *ngIf="product.quality">
+                        <a [routerLink]="['/quality', product.quality?.id, 'view']">{{product.quality?.name}}</a>
+                    </div>
+                </dd>
+                <dt><span>Supplier</span></dt>
+                <dd>
+                    <div *ngIf="product.supplier">
+                        <a [routerLink]="['/supplier', product.supplier?.id, 'view']">{{product.supplier?.name}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/product', product.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

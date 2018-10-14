@@ -35,9 +35,9 @@ spring:
         serialization.indent_output: true
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:postgresql://localhost:5432/opticalshopall
-        username: opticalshopall
-        password:
+        url: jdbc:postgresql://localhost:5432/opticalshopall2
+        username: postgres
+        password: 0345
         hikari:
             auto-commit: false
     jpa:
