@@ -38,6 +38,7 @@ spring:
         url: jdbc:postgresql://ec2-54-243-31-34.compute-1.amazonaws.com:5432/dfm2lu8ph0ejog?user=enjcqvscwhwnsl&password=7c319ebdba10a3828f956a9eb01b286e32f71a776caab0e6e86be6da258e10a8&sslmode=require&sslfactory=org.postgresql.ssl.NonValidatingFactory
         username: enjcqvscwhwnsl
         password: 7c319ebdba10a3828f956a9eb01b286e32f71a776caab0e6e86be6da258e10a8
+        autoCommit: false
     jpa:
         database-platform: io.github.jhipster.domain.util.FixedPostgreSQL82Dialect
         database: POSTGRESQL
